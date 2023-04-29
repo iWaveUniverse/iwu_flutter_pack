@@ -1,0 +1,33 @@
+import 'package:flutter/material.dart';
+
+const kSpacingHeight4 = SizedBox(height: 4);
+const kSpacingHeight8 = SizedBox(height: 8);
+const kSpacingHeight12 = SizedBox(height: 12);
+const kSpacingHeight16 = SizedBox(height: 16);
+const kSpacingHeight20 = SizedBox(height: 20);
+const kSpacingHeight24 = SizedBox(height: 24);
+const kSpacingHeight28 = SizedBox(height: 28);
+const kSpacingHeight32 = SizedBox(height: 32);
+const kSpacingHeight36 = SizedBox(height: 36);
+const kSpacingHeight40 = SizedBox(height: 40);
+const kSpacingHeight44 = SizedBox(height: 44);
+const kSpacingHeight48 = SizedBox(height: 48);
+const kSpacingHeight52 = SizedBox(height: 52);
+const kSpacingHeight56 = SizedBox(height: 56);
+const kSpacingHeight60 = SizedBox(height: 60);
+
+const kSpacingWidth4 = SizedBox(width: 4);
+const kSpacingWidth8 = SizedBox(width: 8);
+const kSpacingWidth12 = SizedBox(width: 12);
+const kSpacingWidth16 = SizedBox(width: 16);
+const kSpacingWidth20 = SizedBox(width: 20);
+const kSpacingWidth24 = SizedBox(width: 24);
+const kSpacingWidth28 = SizedBox(width: 28);
+const kSpacingWidth32 = SizedBox(width: 32);
+const kSpacingWidth36 = SizedBox(width: 36);
+const kSpacingWidth40 = SizedBox(width: 40);
+const kSpacingWidth44 = SizedBox(width: 44);
+const kSpacingWidth48 = SizedBox(width: 48);
+const kSpacingWidth52 = SizedBox(width: 52);
+const kSpacingWidth56 = SizedBox(width: 56);
+const kSpacingWidth60 = SizedBox(width: 60);
