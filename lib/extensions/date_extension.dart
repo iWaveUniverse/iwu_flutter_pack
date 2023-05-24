@@ -103,7 +103,7 @@ extension DateHelperExtension on DateTime {
         .difference(
             DateTime.utc(secondDate.year, secondDate.month, secondDate.day))
         .inDays;
-  }
+  } 
 
   DateTime addDate(int days) {
     return DateTime(year, month, day).add(Duration(days: days));

@@ -11,6 +11,8 @@ Color get appColorBackground => appSetup.appColors.background;
 Color get appColorElement => appSetup.appColors.element;
 Color get appColorText => appSetup.appColors.text;
 
+BuildContext? get findAppContext => appSetup.findAppContext?.call();
+
 class AppSetup {
   static late AppSetup _instance;
   static initialized({required AppSetup value}) {
@@ -21,11 +23,14 @@ class AppSetup {
   AppPrefsBase appPrefs;
   AppColorsBase appColors;
   AppTextStyleWrap? appTextStyleWrap;
+  BuildContext? Function()? findAppContext;
+
   AppSetup({
     required this.env,
     required this.appPrefs,
     required this.appColors,
     this.appTextStyleWrap,
+    this.findAppContext,
   });
 
   AppSetup copyWith({
@@ -33,12 +38,14 @@ class AppSetup {
     AppPrefsBase? appPrefs,
     AppColorsBase? appColors,
     AppTextStyleWrap? appTextStyleWrap,
+    BuildContext? Function()? findAppContext,
   }) {
     return AppSetup(
       env: env ?? this.env,
       appPrefs: appPrefs ?? this.appPrefs,
       appColors: appColors ?? this.appColors,
       appTextStyleWrap: appTextStyleWrap ?? this.appTextStyleWrap,
+      findAppContext: findAppContext ?? this.findAppContext,
     );
   }
 

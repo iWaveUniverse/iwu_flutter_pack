@@ -9,16 +9,18 @@ class WidgetGlassBackground extends StatelessWidget {
   final BorderRadius? borderRadius;
   final Color? backgroundColor;
   final double? blur;
+  final Border? border;
 
-  const WidgetGlassBackground(
-      {Key? key,
-      required this.child,
-      this.margin,
-      this.blur,
-      this.padding,
-      this.borderRadius,
-      this.backgroundColor})
-      : super(key: key);
+  const WidgetGlassBackground({
+    Key? key,
+    required this.child,
+    this.margin,
+    this.blur,
+    this.padding,
+    this.borderRadius,
+    this.backgroundColor,
+    this.border,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +32,14 @@ class WidgetGlassBackground extends StatelessWidget {
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
           child: Container(
+            padding: padding ??
+                const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
+              border: border,
+              borderRadius: borderRadius ?? BorderRadius.circular(8),
               color: backgroundColor ?? Colors.grey.shade200.withOpacity(0.5),
             ),
-            child: Padding(
-              padding: padding ??
-                  const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              child: child,
-            ),
+            child: child,
           ),
         ),
       ),

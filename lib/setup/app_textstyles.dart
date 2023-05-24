@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart'; 
 
-import 'app_setup.dart';
-import 'app_utils.dart';
+import 'app_setup.dart'; 
   
 double get _height => appSetup.appTextStyleWrap?.height ?? 1.2;
 TextStyle _fontWrap({required TextStyle textStyle}) {
