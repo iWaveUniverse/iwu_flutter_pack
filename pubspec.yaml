@@ -1,6 +1,6 @@
 name: _iwu_pack
 description: Private widgets package.
-version: 0.0.1
+version: 0.0.2
 homepage:
 
 environment:
@@ -18,8 +18,8 @@ dependencies:
   lottie: ">=2.3.2"
   cached_network_image: ">=3.2.3"
   octo_image: ">=1.0.2"
-  dash_flags: ^0.0.4
-  logger: ^1.3.0
+  dash_flags: ">=0.1.1"
+  logger: ">=2.0.1"
 
 dev_dependencies:
   flutter_test:

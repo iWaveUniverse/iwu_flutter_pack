@@ -1,10 +1,10 @@
 export 'setup/index.dart';
 export 'widgets/widgets.dart';
 export 'extensions/extensions.dart';
+ 
+//// HOW TO USE
 
-// HOW TO USE
-
-// ==== Start point:
+//// ==== Start point:
 // imagineeringwithusPackSetup() {
 //   AppSetup.initialized(
 //     value: AppSetup(
@@ -15,5 +15,5 @@ export 'extensions/extensions.dart';
 //   );
 // }
 
-// main.dart
+//// main.dart
 // imagineeringwithusPackSetup()
