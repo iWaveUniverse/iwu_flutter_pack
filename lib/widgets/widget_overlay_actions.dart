@@ -1,3 +1,4 @@
+import 'package:_iwu_pack/extensions/context_extension.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -81,14 +82,14 @@ class WidgetOverlayActionsState extends State<WidgetOverlayActions>
     return OverlayEntry(
       builder: (context) {
         return GestureDetector(
-          onTap: hideMenu, 
+          onTap: hideMenu,
           child: Material(
             color: Colors.transparent,
             child: widget.backgroundBuilder != null
                 ? widget.backgroundBuilder!(child)
                 : Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
+                    width: context.width,
+                    height: context.height,
                     color: Colors.transparent,
                     child: child,
                   ),

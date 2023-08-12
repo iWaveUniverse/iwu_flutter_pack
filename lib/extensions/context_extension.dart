@@ -3,15 +3,15 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 extension ContextExtensionss on BuildContext {
-  /// The same of [MediaQuery.of(context).size]
-  Size get mediaQuerySize => MediaQuery.of(this).size;
+  /// The same of [MediaQuery.sizeOff(context)]
+  Size get mediaQuerySize => MediaQuery.sizeOf(this);
 
-  /// The same of [MediaQuery.of(context).size.height]
+  /// The same of [MediaQuery.sizeOff(context).height]
   /// Note: updates when you rezise your screen (like on a browser or
   /// desktop window)
   double get height => mediaQuerySize.height;
 
-  /// The same of [MediaQuery.of(context).size.width]
+  /// The same of [MediaQuery.sizeOff(context).width]
   /// Note: updates when you rezise your screen (like on a browser or
   /// desktop window)
   double get width => mediaQuerySize.width;
@@ -55,7 +55,7 @@ extension ContextExtensionss on BuildContext {
         widthTransformer(dividedBy: dividedBy, reducedBy: reducedByW);
   }
 
-  /// similar to [MediaQuery.of(context).padding]
+  /// similar to []
   ThemeData get theme => Theme.of(this);
 
   /// Check if dark mode theme is enable
@@ -64,23 +64,23 @@ extension ContextExtensionss on BuildContext {
   /// give access to Theme.of(context).iconTheme.color
   Color? get iconColor => theme.iconTheme.color;
 
-  /// similar to [MediaQuery.of(context).padding]
+  /// similar to []
   TextTheme get textTheme => Theme.of(this).textTheme;
 
-  /// similar to [MediaQuery.of(context).padding]
-  EdgeInsets get mediaQueryPadding => MediaQuery.of(this).padding;
+  /// similar to []
+  EdgeInsets get mediaQueryPadding => MediaQuery.paddingOf(this);
 
-  /// similar to [MediaQuery.of(context).padding]
+  /// similar to []
   MediaQueryData get mediaQuery => MediaQuery.of(this);
 
   /// similar to [MediaQuery.of(context).viewPadding]
-  EdgeInsets get mediaQueryViewPadding => MediaQuery.of(this).viewPadding;
+  EdgeInsets get mediaQueryViewPadding => MediaQuery.viewPaddingOf(this);
 
   /// similar to [MediaQuery.of(context).viewInsets]
-  EdgeInsets get mediaQueryViewInsets => MediaQuery.of(this).viewInsets;
+  EdgeInsets get mediaQueryViewInsets => MediaQuery.viewInsetsOf(this);
 
   /// similar to [MediaQuery.of(context).orientation]
-  Orientation get orientation => MediaQuery.of(this).orientation;
+  Orientation get orientation => MediaQuery.orientationOf(this);
 
   /// check if device is on landscape mode
   bool get isLandscape => orientation == Orientation.landscape;
@@ -89,10 +89,10 @@ extension ContextExtensionss on BuildContext {
   bool get isPortrait => orientation == Orientation.portrait;
 
   /// similar to [MediaQuery.of(this).devicePixelRatio]
-  double get devicePixelRatio => MediaQuery.of(this).devicePixelRatio;
+  double get devicePixelRatio => MediaQuery.devicePixelRatioOf(this);
 
   /// similar to [MediaQuery.of(this).textScaleFactor]
-  double get textScaleFactor => MediaQuery.of(this).textScaleFactor;
+  double get textScaleFactor => MediaQuery.textScaleFactorOf(this);
 
   /// get the shortestSide from screen
   double get mediaQueryShortestSide => mediaQuerySize.shortestSide;

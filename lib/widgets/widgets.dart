@@ -12,5 +12,4 @@ export 'widget_avatar.dart';
 export 'widget_glass_background.dart';
 export 'widget_overlay_actions.dart';
 export 'widget_ripple_button.dart';
-export 'widget_spaces.dart';
 export 'widget_timer.dart';
