@@ -25,12 +25,15 @@ class AppSetup {
   AppTextStyleWrap? appTextStyleWrap;
   BuildContext? Function()? findAppContext;
 
+  PNetworkOptions? networkOptions;
+
   AppSetup({
     required this.env,
     required this.appPrefs,
     required this.appColors,
     this.appTextStyleWrap,
     this.findAppContext,
+    this.networkOptions,
   });
 
   AppSetup copyWith({
@@ -39,6 +42,7 @@ class AppSetup {
     AppColorsBase? appColors,
     AppTextStyleWrap? appTextStyleWrap,
     BuildContext? Function()? findAppContext,
+    PNetworkOptions? networkOptions,
   }) {
     return AppSetup(
       env: env ?? this.env,
@@ -46,29 +50,7 @@ class AppSetup {
       appColors: appColors ?? this.appColors,
       appTextStyleWrap: appTextStyleWrap ?? this.appTextStyleWrap,
       findAppContext: findAppContext ?? this.findAppContext,
+      networkOptions: networkOptions ?? this.networkOptions,
     );
-  }
-
-  @override
-  String toString() {
-    return 'AppSetup(env: $env, appPrefs: $appPrefs, appColors: $appColors, appTextStyleWrap: $appTextStyleWrap)';
-  }
-
-  @override
-  bool operator ==(covariant AppSetup other) {
-    if (identical(this, other)) return true;
-
-    return other.env == env &&
-        other.appPrefs == appPrefs &&
-        other.appColors == appColors &&
-        other.appTextStyleWrap == appTextStyleWrap;
-  }
-
-  @override
-  int get hashCode {
-    return env.hashCode ^
-        appPrefs.hashCode ^
-        appColors.hashCode ^
-        appTextStyleWrap.hashCode;
   }
 }

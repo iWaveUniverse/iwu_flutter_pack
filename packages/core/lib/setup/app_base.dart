@@ -41,3 +41,36 @@ class AppTextStyleWrap {
 
   AppTextStyleWrap({required this.fontWrap, this.height = 1.2});
 }
+
+abstract class PNetworkOptions {
+  final String baseUrl;
+  final String baseUrlAsset; 
+  final String? mqttUrl;
+  final int? mqttPort;
+
+  String appImageCorrectUrl(String url, {base}) {
+    if (url.trim().indexOf('http') != 0) {
+      if ((base ?? baseUrlAsset ?? '').endsWith('/') && url.startsWith('/')) {
+        return (base ?? baseUrlAsset ?? '') + url.substring(1);
+      }
+      return (base ?? baseUrlAsset ?? '') + url;
+    }
+    return url;
+  }
+
+  PNetworkOptions({
+    required this.baseUrl,
+    required this.baseUrlAsset, 
+    this.mqttUrl,
+    this.mqttPort,
+  });
+
+  @override
+  String toString() {
+    return 'PNetworkOptions(baseUrl: $baseUrl, baseUrlAsset: $baseUrlAsset, mqttUrl: $mqttUrl, mqttPort: $mqttPort)';
+  }
+}
+
+class PNetworkOptionsOther extends PNetworkOptions {
+  PNetworkOptionsOther({super.baseUrl = '', super.baseUrlAsset = ''});
+}
