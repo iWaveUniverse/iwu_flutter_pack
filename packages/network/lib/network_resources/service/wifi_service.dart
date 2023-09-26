@@ -35,7 +35,6 @@ class WifiService {
     var connectivityResult =
         _connectivityResult ?? await Connectivity().checkConnectivity();
     bool status = connectivityResult == ConnectivityResult.none;
-    // if (status) AppUtils.showApiMessageError(ApiMessageErrorType.network);
     return status;
   }
 
