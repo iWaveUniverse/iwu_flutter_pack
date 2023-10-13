@@ -1,10 +1,10 @@
 name: _iwu_pack
 description: Private widgets package.
-version: 0.0.3
+version: 0.0.4
 homepage:
 
 environment:
-  sdk: '>=2.19.4 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
@@ -20,6 +20,9 @@ dependencies:
   octo_image: ">=1.0.2"
   dash_flags: ">=0.1.1"
   logger: ">=2.0.1"
+  libphonenumber_plugin: ^0.3.1
+  equatable: ">=2.0.5"
+  collection: ">=1.17.0"
 
 dev_dependencies:
   flutter_test:

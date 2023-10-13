@@ -8,6 +8,7 @@ export 'widget_app_image.dart';
 export 'widget_app_image_placeholder.dart';
 export 'widget_app_lottie.dart';
 export 'widget_app_svg.dart';
+export 'widget_asset_image.dart';
 export 'widget_avatar.dart';
 export 'widget_glass_background.dart';
 export 'widget_overlay_actions.dart';
