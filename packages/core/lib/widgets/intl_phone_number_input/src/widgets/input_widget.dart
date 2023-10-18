@@ -12,28 +12,7 @@ import '../utils/selector_config.dart';
 import '../utils/util.dart';
 import '../utils/widget_view.dart';
 import 'selector_button.dart';
-
-/// Enum for [SelectorButton] types.
-///
-/// Available type includes:
-///   * [PhoneInputSelectorType.DROPDOWN]
-///   * [PhoneInputSelectorType.BOTTOM_SHEET]
-///   * [PhoneInputSelectorType.DIALOG]
-enum PhoneInputSelectorType { DROPDOWN, BOTTOM_SHEET, DIALOG }
-
-/// A [TextFormField] for [InternationalPhoneNumberInput].
-///
-/// [initialValue] accepts a [PhoneNumber] this is used to set initial values
-/// for phone the input field and the selector button
-///
-/// [selectorButtonOnErrorPadding] is a double which is used to align the selector
-/// button with the input field when an error occurs
-///
-/// [locale] accepts a country locale which will be used to translation, if the
-/// translation exist
-///
-/// [countries] accepts list of string on Country isoCode, if specified filters
-/// available countries to match the [countries] specified.
+  
 class InternationalPhoneNumberInput extends StatefulWidget {
   final SelectorConfig selectorConfig;
 

@@ -13,9 +13,7 @@ class SelectorConfig {
   final Widget Function(String)? flagbuilder;
   final TextStyle? selectorTextStyle;
   final Color? bgColor;
-
-  /// [selectorType], for selector button type
-  final PhoneInputSelectorType selectorType;
+ 
 
   /// [countryComparator], sort the country list according to the comparator.
   ///
@@ -34,7 +32,6 @@ class SelectorConfig {
   const SelectorConfig({
     this.flagbuilder,
     this.selectorTextStyle,this.bgColor,
-    this.selectorType = PhoneInputSelectorType.DROPDOWN,
     this.countryComparator,
     this.setSelectorButtonAsPrefixIcon = false,
     this.leadingPadding,
