@@ -44,23 +44,32 @@ class AppTextStyleWrap {
 
 abstract class PNetworkOptions {
   final String baseUrl;
-  final String baseUrlAsset; 
+  final String baseUrlAsset;
   final String? mqttUrl;
   final int? mqttPort;
 
   String appImageCorrectUrl(String url, {base}) {
     if (url.trim().indexOf('http') != 0) {
-      if ((base ?? baseUrlAsset ?? '').endsWith('/') && url.startsWith('/')) {
-        return (base ?? baseUrlAsset ?? '') + url.substring(1);
+      if ((base ?? baseUrlAsset ?? '').endsWith('/')) {
+        if (url.startsWith('/')) {
+          return (base ?? baseUrlAsset ?? '') + url.substring(1);
+        } else {
+          return (base ?? baseUrlAsset ?? '') + url;
+        }
+      } else {
+        if (url.startsWith('/')) {
+          return (base ?? baseUrlAsset ?? '') + url;
+        } else {
+          return (base ?? baseUrlAsset ?? '') + '/' + url;
+        }
       }
-      return (base ?? baseUrlAsset ?? '') + url;
     }
     return url;
   }
 
   PNetworkOptions({
     required this.baseUrl,
-    required this.baseUrlAsset, 
+    required this.baseUrlAsset,
     this.mqttUrl,
     this.mqttPort,
   });

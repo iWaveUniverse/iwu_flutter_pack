@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../setup/index.dart'; 
+import '../setup/index.dart';
 
 DateFormat intlDateFormat([newPattern, languageCode]) {
   return DateFormat(newPattern, languageCode ?? appPrefs.languageCode);
@@ -103,7 +103,7 @@ extension DateHelperExtension on DateTime {
         .difference(
             DateTime.utc(secondDate.year, secondDate.month, secondDate.day))
         .inDays;
-  } 
+  }
 
   DateTime addDate(int days) {
     return DateTime(year, month, day).add(Duration(days: days));
@@ -157,5 +157,11 @@ extension DateHelperExtension on DateTime {
     return DateFormat('${appPrefs.timeFormat}, ${appPrefs.dateFormat}',
             languageCode ?? appPrefs.languageCode)
         .format(this);
+  }
+}
+
+extension IntExtDateTime on int {
+  DateTime dateByTimestamp() {
+    return fromTimestamp(this);
   }
 }

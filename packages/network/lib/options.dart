@@ -74,15 +74,4 @@ class PNetworkOptionsImpl extends PNetworkOptions {
     this.responsePrefixData,
     this.responseIsSuccess,
   });
-
-  @override
-  String appImageCorrectUrl(String url, {base}) {
-    if (url.trim().indexOf('http') != 0) {
-      if ((base ?? baseUrlAsset ?? '').endsWith('/') && url.startsWith('/')) {
-        return (base ?? baseUrlAsset ?? '') + url.substring(1);
-      }
-      return (base ?? baseUrlAsset ?? '') + url;
-    }
-    return url;
-  }
 }

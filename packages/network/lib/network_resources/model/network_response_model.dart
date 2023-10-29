@@ -10,7 +10,6 @@ class NetworkResponse<T> {
       networkOptions.responsePrefixData ?? "values";
 
   int? code;
-  bool? status;
   T? data;
   String? msg;
 
@@ -19,23 +18,23 @@ class NetworkResponse<T> {
       : (code == 200 && data != null);
 
   bool get isError => code != 200;
+  bool get isErrorDisconnect => msg == disconnectError;
 
   NetworkResponse({this.data, this.code, this.msg});
 
   factory NetworkResponse.fromResponse(dio.Response response,
-      {converter, value, String? prefix}) {
+      {dynamic Function(dynamic)? converter, value, String? prefix}) {
     try {
       return NetworkResponse._fromJson(response.data,
           converter: converter, prefix: prefix, value: value)
-        ..code = response.statusCode
-        ..status = response.data["status"] is bool ? response.data["status"] : null;
+        ..code = response.statusCode;
     } catch (e) {
       return NetworkResponse.withErrorConvert(e);
     }
   }
 
-  NetworkResponse._fromJson(dynamic json, {converter, value, String? prefix}) {
-    status = json["status"] is bool ? json["status"] : null;
+  NetworkResponse._fromJson(dynamic json,
+      {dynamic Function(dynamic)? converter, value, String? prefix}) {
     if (value != null) {
       data = value;
     } else if (prefix != null) {
@@ -47,19 +46,20 @@ class NetworkResponse<T> {
             : json[prefix];
       }
     } else {
-      data = converter != null && json[responsePrefixData] != null
-          ? converter(json[responsePrefixData])
-          : json[responsePrefixData];
+      if (responsePrefixData?.isNotEmpty == true) {
+        data = converter != null && json[responsePrefixData] != null
+            ? converter(json[responsePrefixData])
+            : json[responsePrefixData];
+      } else {
+        data = converter != null ? converter(json) : json;
+      }
     }
   }
-
-   
 
   NetworkResponse.withErrorRequest(dio.DioException error) {
     appDebugPrint("NetworkResponse.withErrorRequest: $error");
     try {
       data = null;
-      status = false;
       dio.Response? response = error.response;
       code = response?.statusCode ?? 500;
       if (response?.data?['error'] != null) {
@@ -73,14 +73,12 @@ class NetworkResponse<T> {
   NetworkResponse.withErrorConvert(error) {
     appDebugPrint("NetworkResponse.withErrorConvert: $error");
     data = null;
-    status = false;
     this.msg = unknownError;
   }
 
   NetworkResponse.withDisconnect() {
     appDebugPrint("NetworkResponse.withDisconnect");
     data = null;
-    status = false;
     this.msg = disconnectError;
   }
 }

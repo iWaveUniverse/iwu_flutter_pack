@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:octo_image/octo_image.dart'; 
+import 'package:octo_image/octo_image.dart';
 
 import '../setup/index.dart';
 import 'widget_app_image_placeholder.dart';
@@ -52,7 +52,9 @@ class WidgetAppImage extends StatelessWidget {
     if (isUrlEmpty) return SizedBox(width: width, height: height, child: error);
     String correctImage = imageUrl!;
     if (autoPrefix && !isUrlEmpty) {
-      correctImage = appImageCorrectUrl(correctImage);
+      correctImage =
+          appSetup.networkOptions?.appImageCorrectUrl.call(correctImage) ??
+              correctImage;
     }
     if (radius == 0) {
       return _buildImage(correctImage);

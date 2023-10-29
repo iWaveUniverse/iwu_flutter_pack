@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
+import 'app_setup.dart';
 
 Random _random = Random();
 
@@ -26,7 +27,7 @@ String assetsvg(x) => 'assets/images/svg/$x.svg';
 
 String assetlottie(x) => 'assets/lotties/$x.json';
 
-String assetjson(x) => 'assets/json/$x.json';
+String assetjson(x) => 'assets/jsons/$x.json';
 
 String assetvideo(x) => 'assets/videos/$x';
 
@@ -97,5 +98,4 @@ DateTime fromTimestamp(int seconds) {
 int toTimestamp(DateTime datetime) {
   return datetime.millisecondsSinceEpoch ~/ 1000;
 }
-
-String appImageCorrectUrl(String? value) => '$value';
+ 
