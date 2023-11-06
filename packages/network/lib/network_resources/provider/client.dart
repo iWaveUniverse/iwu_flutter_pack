@@ -18,16 +18,22 @@ class AppClient extends DioForNative {
   static AppClient? _instance;
   static bool _enableErrorHandler = true;
 
-  factory AppClient(
-      {required bool requiredToken,
-      bool isAuthorizationCustom = false,
-      String? token,
-      String? baseUrl,
-      bool enableErrorHandler = true,
-      BaseOptions? options}) {
+  factory AppClient({
+    required bool requiredToken,
+    bool isAuthorizationCustom = false,
+    String? token,
+    String? baseUrl,
+    bool enableErrorHandler = true,
+    BaseOptions? options,
+    List<Interceptor>? customInterceptors,
+  }) {
     _enableErrorHandler = enableErrorHandler;
 
-    _instance ??= AppClient._(baseUrl: baseUrl ?? appBaseUrl, options: options);
+    _instance ??= AppClient._(
+      baseUrl: baseUrl ?? appBaseUrl,
+      options: options,
+      customInterceptors: customInterceptors,
+    );
     if (options != null) _instance!.options = options;
     _instance!.options.baseUrl = baseUrl ?? appBaseUrl;
     (_instance!.transformer as BackgroundTransformer).jsonDecodeCallback =
@@ -43,12 +49,19 @@ class AppClient extends DioForNative {
     return _instance!;
   }
 
-  AppClient._({String? baseUrl, BaseOptions? options}) : super(options) {
+  AppClient._({
+    String? baseUrl,
+    BaseOptions? options,
+    List<Interceptor>? customInterceptors,
+  }) : super(options) {
     interceptors.add(InterceptorsWrapper(
       onRequest: _requestInterceptor,
       onResponse: _responseInterceptor,
       onError: _errorInterceptor,
     ));
+    if (customInterceptors?.isNotEmpty == true) {
+      interceptors.addAll(customInterceptors!);
+    }
     if (networkOptions.loggingEnable) {
       interceptors.add(
         PrettyDioLogger(
