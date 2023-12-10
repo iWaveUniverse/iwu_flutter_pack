@@ -1,0 +1,42 @@
+name: _iwu_pack_chat_firestore
+description: simple chat plugin with firestore project.
+version: 0.0.1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.7.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  firebase_auth: ">=4.10.0"
+  cloud_firestore: ">=4.8.4"
+  collection: ">=1.17.2"
+  encrypt: 5.0.1
+  equatable: ">=2.0.5"
+  firebase_storage: ">=11.2.5"
+  bloc: ">=8.1.2"
+  flutter_bloc: ">=8.1.3"
+  bloc_concurrency: ">=0.2.2"
+  flutter_keyboard_visibility: ">=5.4.1"
+  intl: ">=0.18.0"
+  gap: ">=3.0.1"
+  flutter_image_compress: ">=2.0.4"
+  get_it: ">=7.6.4"
+ 
+  # _iwu_pack: ">=0.0.3"
+  _iwu_pack: 
+    path: ../core
+
+dev_dependencies:
+  flutter_lints: ">=2.0.1"
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/svg/
+    - assets/lotties/
+    - assets/lotties/emoji/
