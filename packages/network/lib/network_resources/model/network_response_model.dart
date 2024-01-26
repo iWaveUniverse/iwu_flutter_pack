@@ -15,9 +15,9 @@ class NetworkResponse<T> {
 
   bool get isSuccess => networkOptions.responseIsSuccess != null
       ? networkOptions.responseIsSuccess!(this)
-      : (code == 200 && data != null);
+      : ((code == 200 || code == 201) && data != null);
 
-  bool get isError => code != 200;
+  bool get isError => code != 200 && code != 201;
   bool get isErrorDisconnect => msg == disconnectError;
 
   NetworkResponse({this.data, this.code, this.msg});
@@ -46,7 +46,7 @@ class NetworkResponse<T> {
             : json[prefix];
       }
     } else {
-      if (responsePrefixData?.isNotEmpty == true) {
+      if (responsePrefixData.isNotEmpty == true) {
         data = converter != null && json[responsePrefixData] != null
             ? converter(json[responsePrefixData])
             : json[responsePrefixData];
@@ -66,7 +66,7 @@ class NetworkResponse<T> {
         this.msg = response?.data?['error'];
       }
     } catch (e) {
-      appDebugPrint("NetworkResponse.withErrorRequest2: $e");
+      appDebugPrint("NetworkResponse.withErrorRequest: catch=$e");
     }
   }
 

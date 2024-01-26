@@ -1,3 +1,4 @@
+import 'package:_iwu_pack/_iwu_pack.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
@@ -47,7 +48,7 @@ class AppMQTT {
         // .withWillMessage('My Will message')
         // .startClean() // Non persistent session for testing
         .withWillQos(MqttQos.atMostOnce);
-    if (_allowPrintLog) print('MQTT::Mosquitto client connecting....');
+    if (_allowPrintLog) appDebugPrint('MQTT::Mosquitto client connecting....');
     _client!.connectionMessage = connMess;
   }
 
@@ -56,34 +57,40 @@ class AppMQTT {
   void connect([String? username, String? password]) async {
     assert(_client != null);
     try {
-      if (_allowPrintLog) print('MQTT::Mosquitto start client connecting....');
+      if (_allowPrintLog) {
+        appDebugPrint('MQTT::Mosquitto start client connecting....');
+      }
 
       await _client!.connect(username, password);
     } on Exception catch (e) {
-      if (_allowPrintLog) print('MQTT::client exception - $e');
+      if (_allowPrintLog) appDebugPrint('MQTT::client exception - $e');
       disconnect();
     }
   }
 
   void disconnect() {
-    if (_allowPrintLog) print('MQTT::Disconnected');
+    if (_allowPrintLog) appDebugPrint('MQTT::Disconnected');
     _client!.disconnect();
   }
 
   /// The subscribed callback
   void onSubscribed(String topic) {
-    if (_allowPrintLog) print('MQTT::Subscription confirmed for topic $topic');
+    if (_allowPrintLog) {
+      appDebugPrint('MQTT::Subscription confirmed for topic $topic');
+    }
   }
 
   /// The unsolicited disconnect callback
   void onDisconnected() {
     if (_allowPrintLog) {
-      print('MQTT::OnDisconnected client callback - Client disconnection');
+      appDebugPrint(
+          'MQTT::OnDisconnected client callback - Client disconnection');
     }
     if (_client!.connectionStatus!.returnCode ==
         MqttConnectReturnCode.noneSpecified) {
       if (_allowPrintLog) {
-        print('MQTT::OnDisconnected callback is solicited, this is correct');
+        appDebugPrint(
+            'MQTT::OnDisconnected callback is solicited, this is correct');
       }
     }
     if (onMQTTDisconnected != null) onMQTTDisconnected!();
@@ -99,7 +106,7 @@ class AppMQTT {
 
   /// The successful connect callback
   void onConnected() {
-    if (_allowPrintLog) print('MQTT::Mosquitto client connected....');
+    if (_allowPrintLog) appDebugPrint('MQTT::Mosquitto client connected....');
     _client!.updates!.listen((List<MqttReceivedMessage<MqttMessage?>>? c) {
       // ignore: avoid_as
       final MqttPublishMessage recMess = c![0].payload as MqttPublishMessage;
@@ -108,7 +115,7 @@ class AppMQTT {
       final String payload =
           MqttPublishPayload.bytesToStringAsString(recMess.payload.message);
       if (_allowPrintLog) {
-        print(
+        appDebugPrint(
             'MQTT::Change notification:: topic is <${c[0].topic}>, payload is <-- $payload -->');
       }
       if (onMQTTMessage != null) onMQTTMessage!(c[0].topic, payload);
@@ -116,13 +123,13 @@ class AppMQTT {
     });
     if (onMQTTConnected != null) onMQTTConnected!(false);
     if (_allowPrintLog) {
-      print(
+      appDebugPrint(
           'MQTT::OnConnected client callback - Client connection was sucessful');
     }
   }
 
   void onReConnected() {
-    if (_allowPrintLog) print('MQTT::Mosquitto client reconnected....');
+    if (_allowPrintLog) appDebugPrint('MQTT::Mosquitto client reconnected....');
     if (onMQTTConnected != null) onMQTTConnected!(true);
   }
 }
