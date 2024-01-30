@@ -13,7 +13,7 @@ class Utils {
   /// Returns a [String] which will be the unicode of a Flag Emoji,
   /// from a country [countryCode] passed as a parameter.
   static String generateFlagEmojiUnicode(String countryCode) {
-    final base = 127397;
+    const base = 127397;
 
     return countryCode.codeUnits
         .map((e) => String.fromCharCode(base + e))

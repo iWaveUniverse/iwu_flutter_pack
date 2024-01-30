@@ -50,7 +50,7 @@ class TimeLinePicker extends StatefulWidget {
   int? value;
 
   TimeLinePicker({
-    Key? key,
+    super.key,
     required this.startDate,
     required this.endDay,
     required this.selectedDay,
@@ -66,8 +66,7 @@ class TimeLinePicker extends StatefulWidget {
     this.infiniteLoop = false,
     this.selectedTimeDelay = const Duration(seconds: 8),
   })  : assert(endDay > 0),
-        assert(endDay >= selectedDay),
-        super(key: key) {
+        assert(endDay >= selectedDay) {
     value = selectedDay;
   }
 

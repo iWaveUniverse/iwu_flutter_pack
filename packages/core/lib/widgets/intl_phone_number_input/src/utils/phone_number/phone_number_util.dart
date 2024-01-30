@@ -72,10 +72,10 @@ class RegionInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['regionCode'] = this.regionPrefix;
-    data['isoCode'] = this.isoCode;
-    data['formattedPhoneNumber'] = this.formattedPhoneNumber;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['regionCode'] = regionPrefix;
+    data['isoCode'] = isoCode;
+    data['formattedPhoneNumber'] = formattedPhoneNumber;
     return data;
   }
 

@@ -94,13 +94,13 @@ class PhoneNumber extends Equatable {
         '',
       );
     } else {
-      throw new Exception('ISO Code is "${phoneNumber.isoCode}"');
+      throw Exception('ISO Code is "${phoneNumber.isoCode}"');
     }
   }
 
   /// Returns a String of [phoneNumber] without [dialCode]
   String parseNumber() {
-    return this.phoneNumber!.replaceAll("${this.dialCode}", '');
+    return phoneNumber!.replaceAll("$dialCode", '');
   }
 
   /// For predefined phone number returns Country's [isoCode] from the dial code,

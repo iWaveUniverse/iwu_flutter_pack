@@ -18,10 +18,10 @@ class ScaleInheritedStateContainer extends InheritedWidget {
   }
 
   const ScaleInheritedStateContainer({
-    Key? key,
+    super.key,
     required this.scaleValue,
-    required Widget child,
-  }) : super(key: key, child: child);
+    required super.child,
+  });
 
   @override
   bool updateShouldNotify(ScaleInheritedStateContainer oldWidget) =>

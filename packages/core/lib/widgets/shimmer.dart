@@ -65,14 +65,14 @@ class Shimmer extends StatefulWidget {
   final bool enabled;
 
   const Shimmer({
-    Key? key,
+    super.key,
     required this.child,
     required this.gradient,
     this.direction = ShimmerDirection.ltr,
     this.period = const Duration(milliseconds: 1500),
     this.loop = 0,
     this.enabled = true,
-  }) : super(key: key);
+  });
 
   ///
   /// A convenient constructor provides an easy and convenient way to create a
@@ -80,7 +80,7 @@ class Shimmer extends StatefulWidget {
   /// `highlightColor`.
   ///
   Shimmer.fromColors({
-    Key? key,
+    super.key,
     required this.child,
     required Color baseColor,
     required Color highlightColor,
@@ -104,8 +104,7 @@ class Shimmer extends StatefulWidget {
               0.5,
               0.65,
               1.0
-            ]),
-        super(key: key);
+            ]);
 
   @override
   _ShimmerState createState() => _ShimmerState();
@@ -164,10 +163,10 @@ class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
       animation: _controller,
       child: widget.child,
       builder: (BuildContext context, Widget? child) => _Shimmer(
-        child: child,
         direction: widget.direction,
         gradient: widget.gradient,
         percent: _controller.value,
+        child: child,
       ),
     );
   }
@@ -186,11 +185,11 @@ class _Shimmer extends SingleChildRenderObjectWidget {
   final Gradient gradient;
 
   const _Shimmer({
-    Widget? child,
+    super.child,
     required this.percent,
     required this.direction,
     required this.gradient,
-  }) : super(child: child);
+  });
 
   @override
   _ShimmerFilter createRenderObject(BuildContext context) {

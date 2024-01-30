@@ -16,7 +16,7 @@ class WidgetAvatar extends StatelessWidget {
   final Widget Function()? placeholderBuilder;
 
   const WidgetAvatar(
-      {Key? key,
+      {super.key,
       required this.imageUrl,
       required this.radius1,
       required this.radius2,
@@ -26,11 +26,10 @@ class WidgetAvatar extends StatelessWidget {
       this.backgroundColor,
       this.errorAsset,
       this.borderColor})
-      : isWithoutBorder = false,
-        super(key: key);
+      : isWithoutBorder = false;
 
   const WidgetAvatar.withoutBorder({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required double radius,
     this.placeholderBuilder,
@@ -41,8 +40,7 @@ class WidgetAvatar extends StatelessWidget {
         radius2 = radius,
         radius3 = radius,
         borderColor = Colors.transparent,
-        backgroundColor = Colors.transparent,
-        super(key: key);
+        backgroundColor = Colors.transparent;
 
   @override
   Widget build(BuildContext context) {

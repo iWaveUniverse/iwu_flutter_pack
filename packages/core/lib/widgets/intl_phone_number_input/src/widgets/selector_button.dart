@@ -18,7 +18,7 @@ class SelectorButton extends StatelessWidget {
   final ValueChanged<Country?> onCountryChanged;
 
   const SelectorButton({
-    Key? key,
+    super.key,
     required this.countries,
     required this.country,
     required this.selectorConfig,
@@ -28,7 +28,7 @@ class SelectorButton extends StatelessWidget {
     required this.onCountryChanged,
     required this.isEnabled,
     required this.isScrollControlled,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -91,13 +91,13 @@ class Item extends StatelessWidget {
   final bool trailingSpace;
 
   const Item({
-    Key? key,
+    super.key,
     this.builder,
     this.country,
     this.textStyle,
     this.leadingPadding = 12,
     this.trailingSpace = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

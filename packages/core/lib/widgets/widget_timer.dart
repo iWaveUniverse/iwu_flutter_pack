@@ -6,10 +6,9 @@ class WidgetTimer extends StatefulWidget {
   final Widget Function() builder;
   final Duration duration;
   const WidgetTimer(
-      {Key? key,
+      {super.key,
       required this.builder,
-      this.duration = const Duration(seconds: 1)})
-      : super(key: key);
+      this.duration = const Duration(seconds: 1)});
 
   @override
   _WidgetTimerState createState() => _WidgetTimerState();

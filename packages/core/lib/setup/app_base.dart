@@ -37,9 +37,14 @@ abstract class AppColorsBase {
 
 class AppTextStyleWrap {
   TextStyle Function(TextStyle style) fontWrap;
-  double? height;
+  double Function()? fontSize;
+  double Function()? height;
 
-  AppTextStyleWrap({required this.fontWrap, this.height = 1.2});
+  AppTextStyleWrap({
+    required this.fontWrap,
+    this.height,
+    this.fontSize,
+  });
 }
 
 abstract class PNetworkOptions {

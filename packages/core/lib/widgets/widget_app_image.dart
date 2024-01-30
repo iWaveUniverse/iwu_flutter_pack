@@ -18,7 +18,7 @@ class WidgetAppImage extends StatelessWidget {
   final Color? color;
 
   const WidgetAppImage({
-    Key? key,
+    super.key,
     required this.imageUrl,
     this.width,
     this.height,
@@ -29,7 +29,7 @@ class WidgetAppImage extends StatelessWidget {
     this.autoPrefix = true,
     this.boxFit = BoxFit.cover,
     this.color,
-  }) : super(key: key);
+  });
 
   bool get isUrlEmpty => (imageUrl ?? '').trim().isEmpty;
 

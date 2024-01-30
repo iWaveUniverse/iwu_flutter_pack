@@ -12,7 +12,7 @@ class WidgetGlassBackground extends StatelessWidget {
   final Border? border;
 
   const WidgetGlassBackground({
-    Key? key,
+    super.key,
     required this.child,
     this.margin,
     this.blur,
@@ -20,7 +20,7 @@ class WidgetGlassBackground extends StatelessWidget {
     this.borderRadius,
     this.backgroundColor,
     this.border,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

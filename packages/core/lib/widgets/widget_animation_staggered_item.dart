@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
-enum AnimationStaggeredType { leftToRight, rightToLeft, bottomToTop, topToBottom }
+enum AnimationStaggeredType {
+  leftToRight,
+  rightToLeft,
+  bottomToTop,
+  topToBottom
+}
 
 class WidgetAnimationStaggeredItem extends StatelessWidget {
   final int index;
@@ -10,35 +15,36 @@ class WidgetAnimationStaggeredItem extends StatelessWidget {
   final AnimationStaggeredType type;
 
   const WidgetAnimationStaggeredItem(
-      {required this.index,
+      {super.key,
+      required this.index,
       required this.child,
       this.type = AnimationStaggeredType.leftToRight,
       this.duration});
 
   @override
   Widget build(BuildContext context) {
-    Widget _child;
+    Widget wchild;
     switch (type) {
       case AnimationStaggeredType.leftToRight:
-        _child = SlideAnimation(
+        wchild = SlideAnimation(
           horizontalOffset: -50.0,
           child: FadeInAnimation(child: child),
         );
         break;
       case AnimationStaggeredType.rightToLeft:
-        _child = SlideAnimation(
+        wchild = SlideAnimation(
           horizontalOffset: 50.0,
           child: FadeInAnimation(child: child),
         );
         break;
       case AnimationStaggeredType.bottomToTop:
-        _child = SlideAnimation(
+        wchild = SlideAnimation(
           verticalOffset: 50.0,
           child: FadeInAnimation(child: child),
         );
         break;
       case AnimationStaggeredType.topToBottom:
-        _child = SlideAnimation(
+        wchild = SlideAnimation(
           verticalOffset: -50.0,
           child: FadeInAnimation(child: child),
         );
@@ -47,7 +53,7 @@ class WidgetAnimationStaggeredItem extends StatelessWidget {
     return AnimationConfiguration.staggeredList(
       position: index,
       duration: duration ?? const Duration(milliseconds: 750),
-      child: _child,
+      child: wchild,
     );
   }
 }

@@ -17,7 +17,7 @@ class WidgetOverlayActions extends StatefulWidget {
   final ValueChanged<bool>? callback;
   final double inkwellBorderRadius;
   const WidgetOverlayActions({
-    Key? key,
+    super.key,
     this.duration = const Duration(milliseconds: 200),
     this.gestureType = GestureType.onTap,
     this.backgroundBuilder,
@@ -26,7 +26,7 @@ class WidgetOverlayActions extends StatefulWidget {
     this.child,
     this.childBuilder,
     this.inkwellBorderRadius = 99,
-  }) : super(key: key);
+  });
 
   @override
   State<WidgetOverlayActions> createState() => WidgetOverlayActionsState();

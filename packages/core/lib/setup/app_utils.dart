@@ -5,15 +5,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:logger/logger.dart';
-import 'app_setup.dart';
+import 'package:logger/logger.dart'; 
 
-Random _random = Random();
-
-int intInRange(int min, int max) => min + _random.nextInt(max - min);
+int intInRange(int min, int max) => min + Random().nextInt(max - min);
 
 double doubleInRange(num start, num end) =>
-    _random.nextDouble() * (end - start) + start;
+    Random().nextDouble() * (end - start) + start;
 
 void appHaptic() {
   HapticFeedback.lightImpact();
@@ -62,10 +59,10 @@ String currencySymbol(String? currency) {
   if (currency == null) return '';
   try {
     return NumberFormat.simpleCurrency(locale: currency).currencySymbol;
-  } catch (e) {}
+  } catch (_) {}
   try {
     return NumberFormat.simpleCurrency(name: currency).currencySymbol;
-  } catch (e) {}
+  } catch (_) {}
   return '';
 }
 
@@ -98,4 +95,3 @@ DateTime fromTimestamp(int seconds) {
 int toTimestamp(DateTime datetime) {
   return datetime.millisecondsSinceEpoch ~/ 1000;
 }
- 

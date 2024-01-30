@@ -8,11 +8,11 @@ class WidgetAppImagePlaceHolder extends StatelessWidget {
   final double? height;
   final BorderRadius? borderRadius;
   const WidgetAppImagePlaceHolder({
-    Key? key,
+    super.key,
     this.width,
     this.height,
     this.borderRadius,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +28,11 @@ class WidgetAppShimmer extends StatelessWidget {
   final double? height;
   final BorderRadius? borderRadius;
   const WidgetAppShimmer({
-    Key? key,
+    super.key,
     this.width,
     this.height,
     this.borderRadius,
-  }) : super(key: key);
+  });
 
   Color get baseColor => appColors.shimmerBaseColor ;
 
