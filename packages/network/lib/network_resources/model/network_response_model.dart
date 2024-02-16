@@ -9,25 +9,25 @@ class NetworkResponse<T> {
   String get responsePrefixData =>
       networkOptions.responsePrefixData ?? "values";
 
-  int? code;
+  int? statusCode;
   T? data;
   String? msg;
 
   bool get isSuccess => networkOptions.responseIsSuccess != null
       ? networkOptions.responseIsSuccess!(this)
-      : ((code == 200 || code == 201) && data != null);
+      : ((statusCode == 200 || statusCode == 201) && data != null);
 
-  bool get isError => code != 200 && code != 201;
+  bool get isError => statusCode != 200 && statusCode != 201;
   bool get isErrorDisconnect => msg == disconnectError;
 
-  NetworkResponse({this.data, this.code, this.msg});
+  NetworkResponse({this.data, this.statusCode, this.msg});
 
   factory NetworkResponse.fromResponse(dio.Response response,
       {dynamic Function(dynamic)? converter, value, String? prefix}) {
     try {
       return NetworkResponse._fromJson(response.data,
           converter: converter, prefix: prefix, value: value)
-        ..code = response.statusCode;
+        ..statusCode = response.statusCode;
     } catch (e) {
       return NetworkResponse.withErrorConvert(e);
     }
@@ -61,7 +61,7 @@ class NetworkResponse<T> {
     try {
       data = null;
       dio.Response? response = error.response;
-      code = response?.statusCode ?? 500;
+      statusCode = response?.statusCode ?? 500;
       if (response?.data?['error'] != null) {
         this.msg = response?.data?['error'];
       }
