@@ -19,7 +19,6 @@ class AppClient extends DioForNative {
   static bool _enableErrorHandler = true;
 
   factory AppClient({
-    required bool requiredToken,
     bool isAuthorizationCustom = false,
     String? token,
     String? baseUrl,
@@ -40,7 +39,7 @@ class AppClient extends DioForNative {
         parseJson;
     if ((token == null || token.isEmpty)) {
       _instance!.options.headers.remove(r'Authorization');
-    } else if (requiredToken) {
+    } else {
       _instance!.options.headers.addAll({
         r'Authorization': isAuthorizationCustom ? token : ('Bearer $token')
       });
